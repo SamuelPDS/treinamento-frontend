@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FormComponent } from './components/form/form.component';
 import { NgxMaskModule } from 'ngx-mask';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchClientComponent } from './components/search-client/search-client.component';
 
 
 
@@ -17,7 +18,8 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FormComponent
+    FormComponent,
+    SearchClientComponent
   ],
   imports: [
     BrowserModule,

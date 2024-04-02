@@ -13,6 +13,7 @@
         <label for="cpf" class="form-label">CPF</label>
         <input type="number" class="form-control" id="cpf" formControlName="cpf">
         <span class="text-danger" *ngIf="formSubmitted && this.formGroup.get('cpf')?.hasError('required')">Cpf obrigatório!</span>
+        <span class="text-danger" *ngIf="formSubmitted && this.formGroup.get('cpf')?.hasError('minLength')">deve conter 11 dígitos!</span>
     </div>
 
     <div class="col-md-12">

@@ -35,6 +35,11 @@ export class FormComponent implements OnInit {
   
   }
 
+  // onBluer() {
+  //   if(!this.formGroup.valid) {
+  //     this.formSubmitted = true
+  //   }
+  // }
 
   onSubmit(){
     if(this.formGroup.valid) {
