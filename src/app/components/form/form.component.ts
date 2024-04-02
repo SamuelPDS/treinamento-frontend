@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormsModule, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { BackendServiceService } from 'src/app/service/backend-service.service';
 import { FormServiceService } from 'src/app/service/form-service.service';
 import { Customer } from 'src/app/shared/customer';
@@ -12,6 +12,7 @@ import { Customer } from 'src/app/shared/customer';
 })
 export class FormComponent implements OnInit {
   formGroup!: FormGroup;
+  formSubmitted: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private viaCep: FormServiceService, private backend: BackendServiceService) { }
 
@@ -21,28 +22,31 @@ export class FormComponent implements OnInit {
 
   createForm(customer: Customer) {
     this.formGroup = this.formBuilder.group({
-      name: [customer.name],
-      cpf: [customer.cpf],
-      email: [customer.email],
-      bornData: [customer.bornData],
-      cep: [customer.cep],
-      street: [customer.street],
-      streetNum: [customer.streetNum],
-      bairro: [customer.bairro],
+      name: [customer.name, [Validators.required]],
+      cpf: [customer.cpf, [Validators.required, Validators.minLength(11)]],
+      email: [customer.email,Validators.required],
+      bornData: [customer.bornData,Validators.required],
+      cep: [customer.cep,Validators.required],
+      street: [customer.street,Validators.required],
+      streetNum: [customer.streetNum,Validators.required],
+      bairro: [customer.bairro,Validators.required],
       complemento: [customer.complemento]
-    })
+    }) 
+  
   }
+
 
   onSubmit(){
-    console.log('enviado')
-    console.log(this.formGroup.value)
-    this.backend.postBackEnd(this.formGroup.value).subscribe(res => {
-      console.log(res)
-    })
-  }
-
-  dados() {
-    // console.log(this.formGroup.get('name'))
+    if(this.formGroup.valid) {
+      console.log(this.formGroup)
+      console.log('enviado')
+      console.log(this.formGroup.value)
+      this.backend.postBackEnd(this.formGroup.value).subscribe(res => {
+      })
+    } else {
+      console.log(this.formGroup)
+     this.formSubmitted = true
+    }
   }
 
 
