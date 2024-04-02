@@ -34,20 +34,22 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('clicado')
+    console.log('enviado')
     console.log(this.formGroup.value)
-    this.backend.postBackEnd(this.formGroup.value)
+    this.backend.postBackEnd(this.formGroup.value).subscribe(res => {
+      console.log(res)
+    })
   }
 
   dados() {
-    console.log(this.formGroup.get('name'))
+    // console.log(this.formGroup.get('name'))
   }
 
 
   getCEP(event: any) {
     const cep = event.target.value
     this.viaCep.getAdress(cep).subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.addAdress(res);
     })
   }
@@ -56,7 +58,6 @@ export class FormComponent implements OnInit {
     this.formGroup.get('street')?.setValue(res.logradouro)
     this.formGroup.get('complemento')?.setValue(res.complemento)
     this.formGroup.get('bairro')?.setValue(res.bairro)
-
   }
 
 

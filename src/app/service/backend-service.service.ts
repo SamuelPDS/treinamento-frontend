@@ -6,11 +6,11 @@ import { Customer } from '../shared/customer';
   providedIn: 'root'
 })
 export class BackendServiceService {
-private url: any = 'http://localhost:8080/AllDataCustomer';
+private url: any = 'http://localhost:8080/customer/AllDataCustomer';
 
   constructor(private httpCliente: HttpClient) { }
 
   postBackEnd(form: Customer) {
-    this.httpCliente.post(this.url, form);
+    return this.httpCliente.post(this.url, form);
   }
 }
