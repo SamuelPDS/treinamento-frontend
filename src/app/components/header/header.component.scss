@@ -2,6 +2,11 @@
     justify-content: center;
 }
 
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+}
+
 app-form {
     display: flex;
     justify-content: center;
