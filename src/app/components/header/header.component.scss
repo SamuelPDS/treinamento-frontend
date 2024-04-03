@@ -1,3 +1,7 @@
+app-form {
+    display: flex;
+    justify-content: center;
+}
 .container-fluid {
     justify-content: center;
 }
@@ -7,7 +11,6 @@
     justify-content: space-between;
 }
 
-app-form {
-    display: flex;
-    justify-content: center;
+.nav-item {
+  margin-right: 1rem;
 }
