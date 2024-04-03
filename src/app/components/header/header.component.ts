@@ -28,25 +28,12 @@ nameClient!: string;
     })
   }
 
-
-  onSubmit(){
-    if(this.formGroup.valid) {
-      this.goTo()
-      const getName = this.backend.getBackend(this.formGroup.value['name'])
-
-    } else {
-      this.formSubmitted = true
-
-    }
-  }
-
-  getName(e: any){
-    this.nameClient = e.target.value
-    return this.nameClient
-  }
-
   goTo() {
     console.log('chamou')
     this.router.navigate(['/search'])
+  }
+
+  goToDelete(){
+    this.router.navigate(['/delete'])
   }
 }
