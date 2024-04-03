@@ -11,12 +11,16 @@
             <a class="nav-link active btn btn-outline-primary" aria-current="page" href="#">Cadastrar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-outline-danger" href="#">Excluir</a>
+            <a class="nav-link btn btn-outline-danger" href="#" (click)="goToDelete()">Excluir</a>
           </li>
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
+            <button class="btn btn-outline-success" type="submit" (click)="goTo()">Buscar</button>
           </ul>
       </div>
     </div>
   </nav>
-<app-form></app-form>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
+
 
