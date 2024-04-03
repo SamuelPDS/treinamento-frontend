@@ -1,6 +1,6 @@
 export class Customer {
     name!: string;
-    cpf!: string;
+    cpf!: any;
     email!: string;
     bornData!: string;
     cep!: string;

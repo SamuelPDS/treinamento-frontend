@@ -8,9 +8,20 @@ import { Customer } from '../shared/customer';
 export class BackendServiceService {
 private url: any = 'http://localhost:8080/customer/AllDataCustomer';
 
+getUrl(){
+  return this.url;
+}
+
   constructor(private httpCliente: HttpClient) { }
 
   postBackEnd(form: Customer) {
     return this.httpCliente.post(this.url, form);
+  }
+
+  getBackend(form: Customer) {
+    console.log(form)
+     return this.httpCliente.get(`${this.url}/${form}`).subscribe(res => {
+        console.log(res)
+    });
   }
 }
