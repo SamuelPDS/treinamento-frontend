@@ -11,21 +11,10 @@ import { Customer } from 'src/app/shared/customer';
 })
 export class HeaderComponent implements OnInit {
 formGroup!: FormGroup;
-formSubmitted: boolean = false;
-nameClient!: string;
-
 
   constructor(private formBuild: FormBuilder, private router: Router, private route: ActivatedRoute, private backend: BackendServiceService) { }
 
   ngOnInit(): void {
-    this.createForm(new Customer())
-  }
-
-
-  createForm(customer: Customer) {
-    this.formGroup = this.formBuild.group({
-      name: [customer.name, [Validators.required]]
-    })
   }
 
   goTo() {
