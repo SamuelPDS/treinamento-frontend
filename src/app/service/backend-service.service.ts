@@ -22,4 +22,8 @@ getUrl(){
 
     return this.httpCliente.get(`${this.url}/${form}`);
   }
+
+  deleteBackend(cpf: string) {
+    return this.httpCliente.delete(`${this.url}/${cpf}`)
+  }
 }

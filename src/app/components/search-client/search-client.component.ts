@@ -33,9 +33,17 @@ export class SearchClientComponent implements OnInit {
   onSubmit(){
     this.backend.getBackend(this.formGroup.value['name']).subscribe(res => {
         this.clientData = res;
+        console.log(res);
       })
-
   };
+
+  onDelete(cpf: string) {
+    console.log(cpf);
+    this.backend.deleteBackend(cpf).subscribe(res => {
+      console.log('Deletado')
+    })
+    
+  }
 
   // getClient(){
   //   const getCpf = `${this.backend}/${this.cpf.cpfClient}`

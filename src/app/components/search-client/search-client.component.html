@@ -49,15 +49,21 @@
           <th scope="col">Rua</th>
           <th scope="col">Número</th>
           <th scope="col">Bairro</th>
+          <th scope="col">Excluir</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row"></th>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr *ngFor="let client of clientData">
+          <td scope="row">{{client.cpf}}</td>
+          <th scope="row">{{client.name}}</th>
+          <td scope="row">{{client.email}}</td>
+          <td scope="row">{{client.cep}}</td>
+          <td scope="row">{{client.street}}</td>
+          <td scope="row">{{client.streetNum}}</td>
+          <td scope="row">{{client.bairro}}</td>
+          <td scope="row">{{client.complemento}}</td>
+          <td scope="row"><i class="btn btn-danger" (click)="onDelete(client.cpf)">X</i></td>
         </tr>
       </tbody>
     </table>
