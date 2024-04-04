@@ -19,9 +19,7 @@ getUrl(){
   }
 
   getBackend(form: Customer) {
-    console.log(form)
-     return this.httpCliente.get(`${this.url}/${form}`).subscribe(res => {
-        console.log(res)
-    });
+
+    return this.httpCliente.get(`${this.url}/${form}`);
   }
 }
