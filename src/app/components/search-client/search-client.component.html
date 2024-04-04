@@ -49,20 +49,47 @@
           <th scope="col">Rua</th>
           <th scope="col">Número</th>
           <th scope="col">Bairro</th>
+          <th scope="col">Editar</th>
           <th scope="col">Excluir</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let client of clientData">
+        <tr *ngFor="let client of clientData" [ngClass]="{'isClicked': client.isClicked}">
           <td scope="row">{{client.cpf}}</td>
-          <th scope="row">{{client.name}}</th>
-          <td scope="row">{{client.email}}</td>
-          <td scope="row">{{client.cep}}</td>
-          <td scope="row">{{client.street}}</td>
-          <td scope="row">{{client.streetNum}}</td>
-          <td scope="row">{{client.bairro}}</td>
-          <td scope="row">{{client.complemento}}</td>
+
+          <td  *ngIf="client.isClicked" scope="row">{{client.name}}</td>
+          <td *ngIf="!client.isClicked"><input type="cpf" class="form-control" id="cpf" value="{{client.name}}">
+          </td>
+
+          <td scope="row" *ngIf="client.isClicked">{{client.email}}</td>
+          <td *ngIf="!client.isClicked"><input type="email" class="form-control" id="email"value="{{client.email}}">
+          </td>
+
+          <td scope="row" *ngIf="client.isClicked" >{{client.cep}}</td>
+          <td *ngIf="!client.isClicked"><input type="cep" class="form-control" id="cep"value="{{client.cep}}">
+          </td>
+
+          <td scope="row" *ngIf="client.isClicked">{{client.street}}</td>
+          <td *ngIf="!client.isClicked"><input type="text" class="form-control" id="street" value="{{client.street}}">
+          </td>
+
+          <td scope="row" *ngIf="client.isClicked" >{{client.streetNum}}</td>
+          <td *ngIf="!client.isClicked"><input type="text" class="form-control" id="street" value="{{client.streetNum}}">
+          </td>
+
+          <td scope="row" *ngIf="client.isClicked">{{client.bairro}}</td>
+          <td *ngIf="!client.isClicked"><input type="text" class="form-control" id="bairro" value="{{client.bairro}}">
+          </td>
+          
+          <td scope="row" *ngIf="client.isClicked">{{client.complemento}}</td>
+          <td *ngIf="!client.isClicked"><input type="text" class="form-control" id="complemento" value="{{client.complemento}}">
+          </td>
+
+          <td scope="row"><i class="btn btn-info bi bi-search" (click)="isClicked=!isClicked" *ngIf="client.isClicked">pesquisar</i></td>
+          <td scope="row"><i class="btn btn-info bi bi-search" (click)="isClicked=!isClicked" *ngIf="!client.isClicked">salvar   
+          
+          </i></td>
           <td scope="row"><i class="btn btn-danger" (click)="onDelete(client.cpf)">X</i></td>
         </tr>
       </tbody>

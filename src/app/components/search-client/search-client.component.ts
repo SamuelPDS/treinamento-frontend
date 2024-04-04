@@ -16,6 +16,7 @@ export class SearchClientComponent implements OnInit {
   formSubmitted: boolean = false;
   nameClient!: string;
   clientData!: any;
+  isClicked: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private backend: BackendServiceService, httpCLient: HttpClient, private cpf: HeaderComponent) { }
 
@@ -41,9 +42,10 @@ export class SearchClientComponent implements OnInit {
     console.log(cpf);
     this.backend.deleteBackend(cpf).subscribe(res => {
       console.log('Deletado')
+      window.location.reload()
     })
-    
   }
+
 
   // getClient(){
   //   const getCpf = `${this.backend}/${this.cpf.cpfClient}`
