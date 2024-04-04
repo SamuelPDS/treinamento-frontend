@@ -43,13 +43,14 @@ export class FormComponent implements OnInit {
 
   onSubmit(){
     if(this.formGroup.valid) {
-      console.log(this.formGroup)
-      console.log('enviado')
-      console.log(this.formGroup.value)
+      // console.log(this.formGroup)
+      // console.log('enviado')
+      // console.log(this.formGroup.value)
       this.backend.postBackEnd(this.formGroup.value).subscribe(res => {
+        alert('Dados enviados com Sucesso!')
       })
     } else {
-      console.log(this.formGroup)
+      // console.log(this.formGroup)
      this.formSubmitted = true
     }
   }
