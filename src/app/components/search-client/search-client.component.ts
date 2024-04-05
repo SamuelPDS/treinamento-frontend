@@ -13,6 +13,7 @@ import { Customer } from 'src/app/shared/customer';
 })
 export class SearchClientComponent implements OnInit {
   formGroup!: FormGroup;
+  formGroupClient!: FormGroup;
   formSubmitted: boolean = false;
   nameClient!: string;
   clientData!: any;
@@ -22,14 +23,28 @@ export class SearchClientComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm(new Customer());
+    this.createFormPut(new Customer());
   }
 
   createForm(customer: Customer) {
     this.formGroup = this.formBuilder.group({
       name: [customer.name]
     })
+  }
 
-  };
+  createFormPut(customer: Customer) {
+    this.formGroupClient = this.formBuilder.group({
+      name: [customer.name],
+      email: [customer.email],
+      bornData: [customer.bornData],
+      cep: [customer.cep],
+      street: [customer.street],
+      streetNum: [customer.streetNum],
+      bairro: [customer.bairro],
+      complemento: [customer.complemento]
+    })
+
+  }
 
   onSubmit(){
     this.backend.getBackend(this.formGroup.value['name']).subscribe(res => {
@@ -43,6 +58,13 @@ export class SearchClientComponent implements OnInit {
     this.backend.deleteBackend(cpf).subscribe(res => {
       console.log('Deletado')
       window.location.reload()
+    })
+  }
+
+  onPut(cpf: string) {
+    console.log('Cliente cadastrado com sucesso')
+    console.log(this.formGroupClient.value)
+    this.backend.putBackend(cpf, this.formGroupClient.value).subscribe(res => {
     })
   }
 
