@@ -60,45 +60,52 @@
 
           <tr *ngFor="let client of clientData" [ngClass]="{'isClicked': client.isClicked}">
             <td scope="row">{{client.cpf}}</td>
-  
+
             <td  *ngIf="!client.isClicked" scope="row">{{client.name}}</td>
             <td *ngIf="client.isClicked">
-              <input type="cpf" class="form-control" id="cpf" value="{{client.name}}" formControlName="name">   
+              <input type="text" class="form-control" id="name" value="{{client.name}}" formControlName="name">
             </td>
-  
+
             <td scope="row" *ngIf="!client.isClicked">{{client.email}}</td>
-            <td *ngIf="client.isClicked"><input type="email" class="form-control" id="email"value="{{client.email}}" formControlName="email">
+            <td *ngIf="client.isClicked">
+              <input type="email" class="form-control" id="email"value="aloooo" formControlName="email">
             </td>
 
             <td scope="row" *ngIf="!client.isClicked">{{client.bornData}}</td>
-            <td *ngIf="client.isClicked"><input type="date" class="form-control" id="bornData"value="{{client.bornData}}" formControlName="bornData">
+            <td *ngIf="client.isClicked">
+              <input type="date" class="form-control" id="bornData"value="{{client.bornData}}" formControlName="bornData">
             </td>
-  
+
             <td scope="row" *ngIf="!client.isClicked" >{{client.cep}}</td>
-            <td *ngIf="client.isClicked"><input type="cep" class="form-control" id="cep"value="{{client.cep}}" formControlName="cep">
+            <td *ngIf="client.isClicked">
+              <input type="cep" class="form-control" id="cep"value="{{client.cep}}" formControlName="cep">
             </td>
-  
+
             <td scope="row" *ngIf="!client.isClicked">{{client.street}}</td>
-            <td *ngIf="client.isClicked"><input type="text" class="form-control" id="street" value="{{client.street}}" formControlName="street">
+            <td *ngIf="client.isClicked">
+              <input type="text" class="form-control" id="street" value="{{client.street}}" formControlName="street">
             </td>
-  
+
             <td scope="row" *ngIf="!client.isClicked" >{{client.streetNum}}</td>
-            <td *ngIf="client.isClicked"><input type="text" class="form-control" id="streetNum" value="{{client.streetNum}}" formControlName="streetNum">
+            <td *ngIf="client.isClicked">
+              <input type="text" class="form-control" id="streetNum" value="{{client.streetNum}}" formControlName="streetNum">
             </td>
-  
+
             <td scope="row" *ngIf="!client.isClicked">{{client.bairro}}</td>
-            <td *ngIf="client.isClicked"><input type="text" class="form-control" id="bairro" value="{{client.bairro}}" formControlName="bairro">
+            <td *ngIf="client.isClicked">
+              <input type="text" class="form-control" id="bairro" value="{{client.bairro}}" formControlName="bairro">
             </td>
-            
+
             <td scope="row" *ngIf="!client.isClicked">{{client.complemento}}</td>
-            <td *ngIf="client.isClicked"><input type="text" class="form-control" id="complemento" value="{{client.complemento}}" formControlName="complemento">
+            <td *ngIf="client.isClicked">
+              <input type="text" class="form-control" id="complemento" value="{{client.complemento}}" formControlName="complemento">
             </td>
-  
+
             <td scope="row"><button class="btn btn-info bi" (click)="client.isClicked=!client.isClicked" *ngIf="!client.isClicked">pesquisar</button></td>
             <td scope="row"><button class="btn btn-info bi bi-search" (click)="onPut(client.cpf)" *ngIf="client.isClicked">salvar</button></td>
-  
+
             <td scope="row"><i class="btn btn-danger" (click)="onDelete(client.cpf)" *ngIf="client.isClicked" >X</i></td>
-            <td scope="row"><i class="btn btn-danger" (click)="onDelete(client.cpf)" *ngIf="!client.isClicked" ></i></td>
+            <td scope="row"><i class="btn btn-danger" *ngIf="!client.isClicked" >Cancelar</i></td>
           </tr>
         </tbody>
       </table>
